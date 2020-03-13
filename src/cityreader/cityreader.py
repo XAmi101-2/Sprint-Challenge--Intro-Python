@@ -87,5 +87,5 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
       # print ("ROW:", row[3])
       # get coresponding values for city's name, lat, lon in the cities file => row[0], row[3]), row[4]
       cities.append(City(row[0], float(row[3]), float(row[4])))
-
+ 
   return within
