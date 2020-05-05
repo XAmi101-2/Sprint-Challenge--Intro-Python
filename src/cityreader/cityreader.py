@@ -1,6 +1,17 @@
 # Create a class to hold a city location. Call the class "City". It should have
 # fields for name, lat and lon (representing latitude and longitude).
 
+import csv
+
+
+class City:
+  def __init__ (self, name, lat, lon):
+    self.name = name
+    self.lat = lat
+    self.lon = lon
+
+  def __str__(self):
+    return f"{self.name},{self.lat},{self.lon}"
 
 # We have a collection of US cities with population over 750,000 stored in the
 # file "cities.csv". (CSV stands for "comma-separated values".)
@@ -68,4 +79,13 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
   # Go through each city and check to see if it falls within 
   # the specified coordinates.
 
+  with open('cities.csv') as csv_file:
+    reader = csv.reader(csv_file)
+    #skip the first line in the csvfile
+    next(reader)
+    for row in reader:
+      # print ("ROW:", row[3])
+      # get coresponding values for city's name, lat, lon in the cities file => row[0], row[3]), row[4]
+      cities.append(City(row[0], float(row[3]), float(row[4])))
+ 
   return within
